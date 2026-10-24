@@ -1,0 +1,14 @@
+name: 'cooldownlint - dependency cooldown check'
+description: 'Fail CI when npm/pnpm/Bun/uv/pip/Renovate/Dependabot install brand-new releases with no waiting period.'
+author: 'ArisRhiannon'
+branding: { icon: 'clock', color: 'blue' }
+inputs:
+  min-days: { description: 'Policy minimum in days', required: false, default: '3' }
+  fail-on: { description: 'info|low|medium|high', required: false, default: 'medium' }
+  path: { description: 'Directory to check', required: false, default: '.' }
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env: { CD_MIN: '${{ inputs.min-days }}', CD_FAIL: '${{ inputs.fail-on }}', CD_PATH: '${{ inputs.path }}' }
+      run: node "$GITHUB_ACTION_PATH/bin/cooldownlint.js" --min-days "$CD_MIN" --fail-on "$CD_FAIL" --fix "$CD_PATH"

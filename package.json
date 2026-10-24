@@ -1,0 +1,15 @@
+{
+  "name": "cooldownlint",
+  "version": "0.1.0",
+  "description": "Check that npm, pnpm, Bun, uv, pip, Renovate and Dependabot all wait N days before installing new releases (dependency cooldown / min-release-age linter). Offline, zero deps, SARIF.",
+  "bin": { "cooldownlint": "bin/cooldownlint.js" },
+  "main": "src/check.js",
+  "files": ["bin", "src", "action.yml"],
+  "scripts": { "test": "node --test test/parse.test.js test/check.test.js test/cli.test.js" },
+  "engines": { "node": ">=18" },
+  "keywords": ["dependency-cooldown", "min-release-age", "minimumReleaseAge", "exclude-newer", "supply-chain-security", "npm", "pnpm", "bun", "uv", "pip", "renovate", "dependabot", "linter", "ci", "sarif", "devsecops"],
+  "author": "Aris Rhiannon (https://github.com/ArisRhiannon)",
+  "license": "MIT",
+  "homepage": "https://github.com/ArisRhiannon/cooldownlint#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/ArisRhiannon/cooldownlint.git" }
+}
